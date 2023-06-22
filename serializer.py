@@ -17,24 +17,26 @@ class Serialize:
     def serialize_gamestate(knights: list, items: list):
         result = {}
 
-        for k in knights:
-            k_result = (k.pos.to_json() if k.pos else None, k.status)
-            if k.equipped:
-                k_result += (
-                    k.equipped.name,
-                    k.attack + k.equipped.attack,
-                    k.defence + k.equipped.defence,
+        for knight in knights:
+            result = (
+                knight.pos.to_json() if knight.pos else None, knight.status
+            )
+            if knight.equipped:
+                result += (
+                    knight.equipped.name,
+                    knight.attack + knight.equipped.attack,
+                    knight.defence + knight.equipped.defence,
                 )
             else:
-                k_result += (None, k.attack, k.defence)
-            result[k.color] = k_result
+                result += (None, knight.attack, knight.defence)
+            result[knight.color] = result
 
-        for i in items:
-            i_result = (i.pos.to_json(), i.pos.knight is not None)
-            result[i.name] = i_result
+        for item in items:
+            result = (item.pos.to_json(), item.pos.knight is not None)
+            result[item.name] = result
 
         return result
 
     @staticmethod
-    def commit_to_fs(state):
+    def commit(state):
         return Path('./final_state.json').write_text(dumps(state))
