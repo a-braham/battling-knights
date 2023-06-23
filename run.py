@@ -19,20 +19,18 @@ class Play:
         ab[7][0].knight = self.B
         ab[7][7].knight = self.G
 
-        self.axe = Item('Axe', 4, ab[2][2], 2, 0)
-        self.dagger = Item('Dagger', 2, ab[2][5], 1, 0)
-        self.magicstaff = Item('MagicStaff', 3, ab[5][2], 1, 1)
-        self.helmet = Item('Helmet', 1, ab[5][5], 0, 1)
+        self.magicstaff = Item('magic_staff', 3, ab[5][2], 1, 1)
+        self.helmet = Item('helmet', 1, ab[5][5], 0, 1)
+        self.dagger = Item('dagger', 2, ab[2][5], 1, 0)
+        self.axe = Item('axe', 4, ab[2][2], 2, 0)
 
         ab[2][2].items.append(self.axe)
         ab[2][5].items.append(self.dagger)
         ab[5][2].items.append(self.magicstaff)
         ab[5][5].items.append(self.helmet)
 
-        sword = Item('sword', 2, ab[1][1], 2, 0)
-        shield = Item('shield', 1, ab[6][6], 0, 2)
-
-        return self.arena, [self.R, self.Y, self.B, self.G], [sword, shield]
+        return self.arena, [self.R, self.B, self.G, self.Y], [
+            self.magicstaff, self.helmet,  self.dagger, self.axe]
 
     def instructions(self):
         instructions = Serialize.read_moves()

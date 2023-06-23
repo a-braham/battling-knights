@@ -14,4 +14,9 @@ G:W
 G:S
 R:E
 R:E
+R:S
+G:W
+R:S
+G:N
+R:S
 GAME-END
