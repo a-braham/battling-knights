@@ -15,7 +15,7 @@ class Serialize:
 
     @staticmethod
     def serialize_gamestate(knights: list, items: list):
-        result = {}
+        output = {}
 
         for knight in knights:
             result = (
@@ -29,13 +29,13 @@ class Serialize:
                 )
             else:
                 result += (None, knight.attack, knight.defence)
-            result[knight.color] = result
+            output[knight.color] = result
 
         for item in items:
             result = (item.pos.to_json(), item.pos.knight is not None)
-            result[item.name] = result
+            output[item.name] = result
 
-        return result
+        return output
 
     @staticmethod
     def commit(state):

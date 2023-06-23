@@ -72,4 +72,4 @@ if __name__ == '__main__':
         (kR, kY, kB, kG),
         (axe, dagger, magicstaff, helmet)
     )
-    Serialize.commit_to_fs(state)
+    Serialize.commit(state)
